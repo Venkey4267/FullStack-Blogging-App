@@ -38,16 +38,12 @@ pipeline {
         }
 
         // Perform SonarQube Analysis with updated project name 'blogging'
-        stage('Sonar Analysis') {
+        stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('sonar') {  // Reference SonarQube environment
-                    sh ''' 
-                        $SCANNER_HOME/bin/sonar-scanner \
-                        -Dsonar.projectName=blogging \
-                        -Dsonar.projectKey=blogging \
-                        -Dsonar.java.binaries=target/classes  // Path to compiled classes
-                    '''
+                withSonarQubeEnv('sonar-server') {
+                sh "$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectKey=blogging -Dsonar.projectName=blogging -Dsonar.java.binaries=target"
                 }
+
             }
         }
 
