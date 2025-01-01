@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/jaiswaladi246/TaskMaster-Pro.git'
+                git branch: 'main', url: 'https://github.com/Venkey4267/FullStack-Blogging-App.git'
             }
         }
 
